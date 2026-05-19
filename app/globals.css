@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #06111f;
+}
+
+body {
+  margin: 0;
+  color: #f7f1e4;
+}
+
+::selection {
+  background: rgba(216, 185, 106, 0.3);
+}
+
+@layer components {
+  .section-title {
+    @apply font-serif text-4xl leading-tight text-white md:text-6xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-champagne px-7 py-4 text-sm font-semibold text-navy-950 shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-[#e2c878];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-champagne hover:text-champagne;
+  }
+
+  .premium-card {
+    @apply relative overflow-hidden rounded-2xl border border-champagne/20 bg-navy-900/70 p-8 shadow-panel backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-champagne/45;
+  }
+
+  .premium-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(216, 185, 106, 0.08), transparent 38%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .premium-card:hover::before {
+    opacity: 1;
+  }
+
+  .step-card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.035] p-7 backdrop-blur-xl transition duration-500 hover:border-champagne/35 hover:bg-white/[0.055];
+  }
+
+  .editorial-copy {
+    @apply space-y-7 self-center text-lg leading-9 text-white/[0.72];
+  }
+}
+
+.microbe-field {
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, rgba(216, 185, 106, 0.14) 0 1px, transparent 1.5px),
+    linear-gradient(115deg, transparent 0 47%, rgba(216, 185, 106, 0.035) 48% 49%, transparent 50% 100%);
+  background-size: 86px 86px, 280px 280px;
+  mask-image: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+}
+
+.network-panel {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(216, 185, 106, 0.13) 0 3px, transparent 4px),
+    radial-gradient(circle at 34% 52%, rgba(216, 185, 106, 0.11) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 28%, rgba(216, 185, 106, 0.11) 0 3px, transparent 4px),
+    radial-gradient(circle at 84% 76%, rgba(216, 185, 106, 0.1) 0 2px, transparent 3px),
+    linear-gradient(128deg, transparent 0 25%, rgba(216, 185, 106, 0.035) 25.3% 25.7%, transparent 26% 100%),
+    linear-gradient(32deg, transparent 0 55%, rgba(216, 185, 106, 0.032) 55.3% 55.7%, transparent 56% 100%);
+}
+
+.line-icon {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.line-icon::before,
+.line-icon::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 22px;
+  background: currentColor;
+  left: 12px;
+  top: 8px;
+  transform-origin: left center;
+}
+
+.line-icon::before {
+  transform: rotate(34deg);
+}
+
+.line-icon::after {
+  transform: rotate(-34deg);
+}
+
+.ecosystem-grid {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+
+.ecosystem-grid::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(216, 185, 106, 0.48), transparent);
+}
+
+.ecosystem-node {
+  position: relative;
+  margin-left: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  background: rgba(7, 24, 39, 0.72);
+  padding: 1.5rem;
+  backdrop-filter: blur(18px);
+}
+
+.node-dot {
+  position: absolute;
+  left: -2.35rem;
+  top: 1.75rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 999px;
+  background: #d8b96a;
+  box-shadow: 0 0 20px rgba(216, 185, 106, 0.42);
+}
+
+.animate-rise {
+  animation: rise 900ms ease-out both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 2.7rem;
+  }
+
+  .ecosystem-grid::before {
+    left: 0.6rem;
+  }
+
+  .ecosystem-node {
+    margin-left: 1.35rem;
+  }
+
+  .node-dot {
+    left: -1.72rem;
+  }
+}
